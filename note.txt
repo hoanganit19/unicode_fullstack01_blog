@@ -1,0 +1,11 @@
+Components => Global Components => Components sử dụng ở tất cả các trang
+
+Pages => Mỗi components sẽ tương ứng 1 trang (Routes)
+
+Assets => Chứa toàn bộ asset của project 
+
+Layouts => Chứa toàn bộ các thành phần layouts
+
+Routes => Chứa các config route
+
+Services => Chứa các thư viện tự phát triển
