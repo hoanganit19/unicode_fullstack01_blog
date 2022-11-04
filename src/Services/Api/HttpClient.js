@@ -1,5 +1,22 @@
+import config from '../../Configs/Config.json';
+import endpoints from '../../Configs/EndPoint.json';
+
+const {SERVER_API} = config;
+
 export default class HttpClient {
+
+    constructor(){
+       
+        if (Object.keys(endpoints).length){
+            Object.keys(endpoints).forEach(endpoint => {
+                this[endpoint] = endpoints[endpoint];
+            })
+        }
+    }
+
     callApi = async (url, method = 'GET', body=null) => {
+        
+        url = SERVER_API+url;
 
         const options = {
             method: method,
