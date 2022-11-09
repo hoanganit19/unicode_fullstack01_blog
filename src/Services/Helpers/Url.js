@@ -1,22 +1,31 @@
+import String from "./String";
+
+const string = new String();
+
 export default class Url{
     constructor(){
         this.home = '/';
         this.about = '/gioi-thieu'
 
-        this.post = '/bai-viet/:id';
-        this.category = '/chuyen-muc/:id';
+        this.post = '/bai-viet/:slug-:id.html';
+        this.category = '/chuyen-muc/:slug-:id.html';
+
+        this.search = '/tim-kiem'
 
     }
 
-    getPost = (id) => {
+    getPost = (id, title) => {
         let url = this.post;
-        url = url.replace(':id', id);
+        
+        const slug = string.getSlug(title);
+        url = url.replace(':id', id).replace(':slug', slug);
         return url;
     }
 
-    getCategory = (id) => {
+    getCategory = (id, name) => {
         let url = this.category;
-        url = url.replace(':id', id);
+        const slug = string.getSlug(name);
+        url = url.replace(':id', id).replace(':slug', slug);
         return url;
     }
 }

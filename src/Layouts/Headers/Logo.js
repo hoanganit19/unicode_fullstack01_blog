@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class Logo extends Component {
   constructor(props){
@@ -8,11 +9,11 @@ export class Logo extends Component {
     const {logo} = this.props;
     
     return (
-      <a href="/" className="logo d-flex align-items-center">
+      <Link to="/" className="logo d-flex align-items-center">
         {/* Uncomment the line below if you also wish to use an image logo */}
         {/* <img src="assets/img/logo.png" alt=""> */}
         <h1>{logo}</h1>
-      </a>
+      </Link>
     );
   }
 }

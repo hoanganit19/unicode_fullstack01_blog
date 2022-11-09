@@ -14,20 +14,21 @@ export class PostItem extends Component {
 
     return (
       <div className="d-md-flex post-entry-2 half">
-        <a href="single-post.html" className="me-4 thumbnail">
-          <img
+        <Link to={url.getPost(id, title)} className="me-4 thumbnail">
+        <img
             src={thumbnail}
             alt={title}
             className="img-fluid"
           />
-        </a>
+        </Link>
+        
         <div>
           <div className="post-meta">
             <span className="date">{category?.name}</span>{" "}
             <span className="mx-1">•</span> <span>Jul 5th '22</span>
           </div>
           <h3>
-            <Link to={url.getPost(id)}>
+            <Link to={url.getPost(id, title)}>
                 {
                     title
                 }

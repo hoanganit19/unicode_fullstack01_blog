@@ -10,10 +10,12 @@ export class StateProvider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: []
+      posts: [],
+      keyword: ''
     }
     this.dispatch = {
-      getPosts: this.getPosts
+      getPosts: this.getPosts,
+      updateKeyword: this.updateKeyword
     }
   }
 
@@ -31,6 +33,13 @@ export class StateProvider extends Component {
         posts: res.data
       })
     }
+  }
+
+  updateKeyword = (keyword) => {
+   
+    this.setState({
+      keyword: keyword
+    })
   }
 
   render() {

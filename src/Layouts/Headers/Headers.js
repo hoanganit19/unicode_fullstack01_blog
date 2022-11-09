@@ -5,6 +5,8 @@ import Social from "./Social";
 
 import HttpClient from '../../Services/Api/HttpClient';
 
+import './Headers.scss';
+
 const client = new HttpClient();
 
 export class Headers extends Component {

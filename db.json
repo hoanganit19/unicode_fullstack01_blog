@@ -97,57 +97,43 @@
       "logo": "Unicode Academy",
       "menus": [
         {
-          "link": "#",
+          "link": "/",
           "title": "Trang chủ"
         },
 
         {
-          "link": "#",
+          "link": "/gioi-thieu",
           "title": "Giới thiệu"
         },
 
         {
           "link": "#",
-          "title": "Sản phẩm",
+          "title": "Chuyên mục",
           "children": [
             {
-              "link": "#",
-              "title": "Sản phẩm 1"
+              "link": "/chuyen-muc/the-gioi-1.html",
+              "title": "Thế giới"
             },
 
             {
-              "link": "#",
-              "title": "Sản phẩm 2",
-              "children": [
-                {
-                  "link": "#",
-                  "title": "Sản phẩm 2.1"
-                },
-                {
-                  "link": "#",
-                  "title": "Sản phẩm 2.2"
-                },
-                {
-                  "link": "#",
-                  "title": "Sản phẩm 2.3"
-                }
-              ]
+              "link": "/chuyen-muc/kinh-doanh-2.html",
+              "title": "Kinh doanh"
             },
 
             {
-              "link": "#",
-              "title": "Sản phẩm 3"
+              "link": "/chuyen-muc/phap-luat-3.html",
+              "title": " Pháp luật"
             }
           ]
         },
 
         {
-          "link": "#",
+          "link": "/tin-tuc",
           "title": "Tin tức"
         },
 
         {
-          "link": "#",
+          "link": "/lien-he",
           "title": "Liên hệ"
         }
       ],

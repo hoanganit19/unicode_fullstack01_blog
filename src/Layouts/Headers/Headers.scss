@@ -1,0 +1,12 @@
+.navbar{
+    a{
+        &.active{
+            color: red !important;
+        }
+        
+        &:hover{
+            @extend .active;
+        }
+    }
+    
+}

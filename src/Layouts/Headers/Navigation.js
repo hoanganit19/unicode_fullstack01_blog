@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 export class Navigation extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export class Navigation extends Component {
           menus.map(({ link, title, children }, index) => {
             let menuItem = (
               <li key={index}>
-                <a href={link}>{title}</a>
+                <NavLink to={link}>{title}</NavLink>
               </li>
             );
 

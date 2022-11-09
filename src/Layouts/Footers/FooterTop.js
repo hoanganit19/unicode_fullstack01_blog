@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import HttpClient from "../../Services/Api/HttpClient";
 import moment from 'moment';
 import Url from "../../Services/Helpers/Url";
+import { Link } from "react-router-dom";
 const client = new HttpClient();
 const url = new Url();
 export class FooterTop extends Component {
@@ -24,9 +25,9 @@ export class FooterTop extends Component {
               <h3 className="footer-heading">{about?.title}</h3>
               <p>{about?.content}</p>
               <p>
-                <a href={about?.link} className="footer-link-more">
+                <Link to={about?.link} className="footer-link-more">
                   {about?.text_link}
-                </a>
+                </Link>
               </p>
             </div>
             <div className="col-6 col-lg-2">
@@ -35,9 +36,9 @@ export class FooterTop extends Component {
                 <ul className="footer-links list-unstyled">
                   {menus?.lists.map(({ link, title }, index) => (
                     <li key={index}>
-                      <a href={link}>
+                      <Link to={link}>
                         <i className="bi bi-chevron-right" /> {title}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -49,9 +50,9 @@ export class FooterTop extends Component {
                 <ul className="footer-links list-unstyled">
                   {cateList?.map(({ name, id }, index) => (
                     <li key={index}>
-                      <a href={url.getCategory(id)}>
+                      <Link to={url.getCategory(id, name)}>
                         <i className="bi bi-chevron-right" /> {name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -64,8 +65,8 @@ export class FooterTop extends Component {
                   {postList.map(({ id, title, thumbnail, category, created_at }) => {
                     return (
                       <li key={id}>
-                        <a
-                          href={url.getPost(id)}
+                        <Link
+                          to={url.getPost(id, title)}
                           className="d-flex align-items-center"
                         >
                           <img
@@ -83,7 +84,7 @@ export class FooterTop extends Component {
                               {title}
                             </span>
                           </div>
-                        </a>
+                        </Link>
                       </li>
                     );
                   })}

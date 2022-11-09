@@ -9,6 +9,7 @@ const client = new HttpClient();
 export class Home extends Component {
 
   render() {
+   
     return (
       <>
         {/* ======= Hero Slider Section ======= */}

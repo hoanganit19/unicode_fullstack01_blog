@@ -44,7 +44,7 @@ export class Posts extends Component {
   render() {
     const { posts } = this.props.store.data;
     const { category, status } = this.state;
-    console.log(status);
+   
     return (
       <section>
         <div className="container">
