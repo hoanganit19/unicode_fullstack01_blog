@@ -16,6 +16,8 @@ export class PostDetail extends Component {
     this.state = {
       post: {},
       status: "pending",
+      comments: [],
+      commentType: 'comment'
     };
   }
 
@@ -38,10 +40,42 @@ export class PostDetail extends Component {
   componentDidMount = () => {
     const { id } = this.props.params;
     this.getPost(id);
+    this.getComments(id);
   };
 
+  getComments = async (postId) => {
+    const res = await client.get(client.comments, {
+      _sort: 'id',
+      _order: 'desc',
+      postId: postId
+    });
+    
+    if (res.response.ok){
+      
+      this.setState({
+        comments: res.data
+      })
+    }
+  }
+
+  postComment = async (comment, type='comment') => {
+    const { id: postId } = this.props.params;
+    comment.postId = parseInt(postId);
+
+    const res = await client.post(client.comments, comment);
+    
+    if (res.response.ok){
+      this.getComments(postId);
+      if (type!=='comment'){
+        this.setState({
+          commentType: type
+        })
+      }
+    }
+  }
+
   render() {
-    const { post, status } = this.state;
+    const { post, status, comments } = this.state;
     return (
       <section className="single-post-content">
         <div className="container">
@@ -68,10 +102,10 @@ export class PostDetail extends Component {
                     </div>
                     {/* End Single Post Content */}
                     {/* ======= Comments ======= */}
-                    <Comments />
+                    <Comments comments={comments} onReplyComment={this.postComment} type={this.state.commentType}/>
                     {/* End Comments */}
                     {/* ======= Comments Form ======= */}
-                    <CommentForm />
+                    <CommentForm onPostComment={this.postComment}/>
                     {/* End Comments Form */}
                   </>
                 ) : (

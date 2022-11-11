@@ -1,5 +1,6 @@
 {
     "options": "/options",
     "categories": "/categories",
-    "posts": "/posts"
+    "posts": "/posts",
+    "comments": "/comments"
 }
