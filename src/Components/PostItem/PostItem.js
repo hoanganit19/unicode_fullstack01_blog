@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Link} from 'react-router-dom';
 import Url from '../../Services/Helpers/Url';
+import moment from "moment";
 
 const url = new Url();
 
@@ -10,7 +11,7 @@ export class PostItem extends Component {
   }
   render() {
 
-    const {id, thumbnail, title, excerpt, category, user} = this.props;
+    const {id, thumbnail, title, excerpt, category, user, created_at} = this.props;
 
     return (
       <div className="d-md-flex post-entry-2 half">
@@ -25,7 +26,7 @@ export class PostItem extends Component {
         <div>
           <div className="post-meta">
             <span className="date">{category?.name}</span>{" "}
-            <span className="mx-1">•</span> <span>Jul 5th '22</span>
+            <span className="mx-1">•</span> <span>{moment(created_at).format('DD/MM/YYYY hh:mm:ss')}</span>
           </div>
           <h3>
             <Link to={url.getPost(id, title)}>
