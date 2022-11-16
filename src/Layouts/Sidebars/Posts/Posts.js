@@ -22,7 +22,7 @@ export class Posts extends Component {
     };
 
     if (type == "popular" || type == "trending") {
-      filters.type = type;
+      filters.q = type;
     }
 
     let urlStr = "?_expand=category&_expand=user";

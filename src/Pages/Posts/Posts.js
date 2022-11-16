@@ -5,6 +5,7 @@ import withRouter from "../../Services/Routes/withRouter";
 import PostItem from "../../Components/PostItem/PostItem";
 import HttpClient from "../../Services/Api/HttpClient";
 import Error404 from "../../Errors/Error404";
+import Pagination from "./Pagination";
 
 const client = new HttpClient();
 
@@ -65,23 +66,7 @@ export class Posts extends Component {
                   ) : (
                     <p>Không dữ liệu</p>
                   )}
-                  <div className="text-start py-4">
-                <div className="custom-pagination">
-                  <a href="#" className="prev">
-                    Prevous
-                  </a>
-                  <a href="#" className="active">
-                    1
-                  </a>
-                  <a href="#">2</a>
-                  <a href="#">3</a>
-                  <a href="#">4</a>
-                  <a href="#">5</a>
-                  <a href="#" className="next">
-                    Next
-                  </a>
-                </div>
-              </div>
+                 <Pagination />
                 </>
               )}
 

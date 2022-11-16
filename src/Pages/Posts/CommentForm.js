@@ -1,48 +1,69 @@
 import React, { Component } from "react";
 import moment from "moment";
+import emailjs from "@emailjs/browser";
+import config from "../../Configs/Config.json";
+
+const {SITENAME} = config;
 
 export class CommentForm extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      email: '',
-      message: ''
-    }
+      name: "",
+      email: "",
+      message: "",
+    };
   }
 
   handleSubmitComment = (e) => {
     e.preventDefault();
 
-    const {name, email, message} = this.state;
-    
-   const {onPostComment} = this.props;
-   
-   const comment = {
-    name: name,
-    email: email,
-    message: message,
-    parentId: 0,
-    status: 1,
-    created_at: moment().format("YYYY-MM-DD hh:mm:ss"),
-    updated_at: moment().format("YYYY-MM-DD hh:mm:ss")
-   }
-    
-   onPostComment(comment)
+    const { name, email, message } = this.state;
 
-   this.setState({
-    message: ''
-   })
-  }
+    const { onPostComment } = this.props;
+
+    const comment = {
+      name: name,
+      email: email,
+      message: message,
+      parentId: 0,
+      status: 1,
+      created_at: moment().format("YYYY-MM-DD hh:mm:ss"),
+      updated_at: moment().format("YYYY-MM-DD hh:mm:ss"),
+    };
+
+    onPostComment(comment);
+
+    this.setState({
+      message: "",
+    });
+
+    const templateParams = {
+      name: name,
+      sitename: SITENAME,
+      message: message,
+      email: email,
+      link: window.location.href
+    };
+
+    emailjs.send("service_kl1ouie", "template_d2p2d8g", templateParams, 'K0-a5BUCAxXfsgo6y').then(
+      function (response) {
+        console.log("SUCCESS!", response.status, response.text);
+      },
+      function (error) {
+        console.log("FAILED...", error);
+      }
+    );
+  };
 
   handleChangeValue = (e) => {
-    const data = {...this.state};
+    const data = { ...this.state };
     data[e.target.name] = e.target.value;
     this.setState(data);
-  }
+  };
 
   render() {
-    const {name, email, message} = this.state;
+    const { name, email, message } = this.state;
     return (
       <div className="row justify-content-center mt-5">
         <div className="col-lg-12">
@@ -81,7 +102,6 @@ export class CommentForm extends Component {
                   placeholder="Enter your name"
                   cols={30}
                   rows={10}
-                  
                   name="message"
                   required
                   onChange={this.handleChangeValue}
